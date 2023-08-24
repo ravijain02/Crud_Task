@@ -1,16 +1,34 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import '../styles/home.css'
-import Data from '../api/data.json'
+// import Data from '../api/data.json'
 
 const Home = ({ username }) => {
 
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState(
+        {
+            title: "",
+            description: "",
+            status: false
+        }
+    )
+
+    const updateTask = (e, key) => {
+        let temptask = {...tasks}
+        temptask[key] = e.target.value
+        setTasks(temptask)
+    }
+
+    const addTask = (e) => {
+        e.preventDefault()
+        axios.post('/create', tasks).then(res => console.log(res)).catch(err => console.log(err))
+    }
 
     return (
         <div className='home'>
             <h2>Task List</h2>
             <div className='task-data'>
-                {
+                {/* {
                     <table>
                         <tbody>
                             <tr>
@@ -27,7 +45,16 @@ const Home = ({ username }) => {
                             )}
                         </tbody>
                     </table>
-                }
+                } */}
+                <div>
+                    <label>Title</label>
+                    <input type='text' value={tasks.title} onChange={(e) => updateTask(e, 'title')} placeholder='Enter Title'/><br/>
+                    <label>Description</label>
+                    <input type='text' value={tasks.description} onChange={(e) => updateTask(e, 'description')} placeholder='Enter Description'/><br/>
+                    <label>Task Status</label>
+                    <input type='checkbox' value={tasks.status} onChange={(e) => updateTask(e, 'status')} placeholder='Enter Task Status'/><br/>
+                    <button onClick={addTask}>Add Task</button>
+                </div>
             </div>
         </div>
     )
