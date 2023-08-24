@@ -1,0 +1,29 @@
+.tasklist {
+    margin-top: 20px;
+}
+table.border {
+    border-left: 1px solid #aaa;
+    border-top: 1px solid #aaa;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+table {
+    margin-bottom: 30px;
+    border-spacing: 2px 5px;
+}
+table th {
+    background: #100e17;
+    color: #0b2adbd8;
+    font-weight: 600;
+}
+table.border th,
+table.border td {
+    border-bottom: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+}
+table th,
+table td {
+    padding: 5px;
+    color: #ccc;
+    font-size: 14px;
+}

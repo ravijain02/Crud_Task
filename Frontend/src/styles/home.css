@@ -1,0 +1,33 @@
+.home{
+    margin:20px;
+    color: #fff;
+}
+.task {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+.input_container {
+    margin: 20px;
+}
+.input_container input {
+    width: 100%;
+    padding: 6px;
+    margin: 10px 0;
+}
+.input_container input[type = "checkbox"] {
+    width: 50px;
+    height: 20px;
+}
+button {
+    width: 100px;
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    border: transparent;
+    background-color: #042b58;
+    text-align: center;
+}

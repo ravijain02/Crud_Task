@@ -1,29 +1,36 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
+const express = require("express")
+const cors = require("cors")
+const mongoose = require("mongoose")
 
 const app = express()
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cors())
+
+mongoose.connect("mongodb+srv://User:admin@cluster0.zg9eesx.mongodb.net/?retryWrites=true&w=majority")
+
+const taskSchema = mongoose.Schema({
+    title: String,
+    descriptions: String,
+    completed: Boolean
+})
+
+const Task = mongoose.model('Task', taskSchema)
 
 app.get("/", (req, res) => {
-  res.send("express is here");
+  res.send("express is here")
 });
 
 app.post("/create", (req, res) => {
-    // const newPost = new Post({
-    //   title: req.body.title,
-    //   description: req.body.description,
-    // });
+    const newtask = new Task({
+      title: req.body.title,
+      descriptions: req.body.description,
+      completed: req.body.completed
+    })
 
-    // newPost
-    // .save()
-    // .then((doc) => console.log(doc))
-    // .catch((err) => console.log(err));
-    console.log(req.body)
-});
+    newtask.save().then((doc) => console.log(doc)).catch((err) => console.log(err))
+})
 
 app.listen(3001, function () {
-  console.log("Express server is running");
-});
+  console.log("Express server is running")
+})
