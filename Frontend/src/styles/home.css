@@ -23,6 +23,7 @@ button {
     width: 100px;
     margin-left: 20px;
     padding: 10px;
+    margin-bottom: 10px;
     border-radius: 10px;
     cursor: pointer;
     color: #fff;
@@ -30,4 +31,11 @@ button {
     border: transparent;
     background-color: #042b58;
     text-align: center;
+}
+.tasklist button{
+    width: 200px;
+    margin-bottom: 20px;
+}
+.btn_disable {
+    background-color: #a7abb1;
 }

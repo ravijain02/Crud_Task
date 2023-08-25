@@ -1,0 +1,51 @@
+.delete-box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+.delete-box .inner-wrapper {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    gap: 20px;
+    border-radius: 12px;
+    transform: translate(-50%, -50%);
+    background: #000;
+    padding: 30px 20px;
+}
+.delete-box .inner-wrapper p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+    line-height: 1em;
+}
+.delete-box ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+}
+.delete-box li {
+    display: grid;
+    margin: 0;
+}
+.delete-box li .del_btn {
+    color: #fff;
+    padding:10px;
+    cursor:pointer;
+    min-width: 100px;
+}
+.delete-box li .del_btn.red {
+    background: red;
+    justify-self: end;
+}
+.delete-box li .del_btn.green {
+    background: green;
+}

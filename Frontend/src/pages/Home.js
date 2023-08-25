@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import '../styles/home.css'
-// import Data from '../api/data.json'
 
 const Home = () => {
 
@@ -11,7 +11,7 @@ const Home = () => {
     const [tasks, setTasks] = useState(
         {
             title: "",
-            descriptions: "",
+            description: "",
             completed: false
         }
     )
@@ -30,7 +30,10 @@ const Home = () => {
 
     return (
         <div className='home'>
-            <h2 className='m-bottom'>Task List</h2>
+            <h2 className='m-bottom'>Add Task</h2>
+            <div className='tasklist'>
+                <Link to='/tasklist'><button >Show Task List</button></Link>
+            </div>
             <div className='task'>
                 <div className='input_container'>
                     <label>Title</label>
@@ -38,13 +41,13 @@ const Home = () => {
                 </div>
                 <div className='input_container'>
                     <label>Description</label>
-                    <input type='text' value={tasks.descriptions} onChange={(e) => updateTask(e, 'description')} placeholder='Enter Description'/><br/>
+                    <input type='text' value={tasks.description} onChange={(e) => updateTask(e, 'description')} placeholder='Enter Description'/><br/>
                 </div>
-                {/* <div className='input_container'>
-                    <label>Task Status</label>
-                    <input type='checkbox' value={tasks.completed} onChange={(e) => updateTask(e, 'completed')} placeholder='Enter Task Status'/><br/>
-                </div> */}
-                <button onClick={addTask}>Add Task</button>
+                {(tasks.title === "" && tasks.description === "") ? (
+                    <button className='btn_disable'>Add Task</button>
+                ) : (
+                    <button onClick={addTask}>Add Task</button>
+                )}
             </div>
         </div>
     )
