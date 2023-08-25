@@ -11,13 +11,13 @@ const Login = () => {
     const user_password = 'admin'
   
     const handleSubmit = (e) => {
-      e.preventDefault()
-      if (username === user_name && password === user_password) {
-          setAuthenticated(true)
-      } else {
-          setAuthenticated(false)
-          alert('Authentication failed. Please check your username and password.')
-      }
+        e.preventDefault()
+        if (username === user_name && password === user_password) {
+            setAuthenticated(true)
+        } else {
+            setAuthenticated(false)
+            alert('Authentication failed. Please check your username and password.')
+        }
     }
 
   return (

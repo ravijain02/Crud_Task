@@ -27,3 +27,6 @@ table td {
     color: #ccc;
     font-size: 14px;
 }
+table td button {
+    width: 60px;
+}

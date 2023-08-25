@@ -17,7 +17,7 @@ const UpdateTask = () => {
 
     const updateTask = (e, key) => {
         let temptaskdata = {...taskdata}
-        temptaskdata[key] = e.target.value
+        temptaskdata[key] = e.target.value === 'true' ? e.target.checked : e.target.value
         setTaskdata(temptaskdata)
     }
 
@@ -25,12 +25,16 @@ const UpdateTask = () => {
         axios.put('/tasklist/' + id, taskdata).then(res => {
             setTaskdata(res.data)
         })
-        navigate("/tasklist")
+        navigate("/home")
+    }
+
+    const backHandler = () => {
+        navigate("/home")
     }
 
   return (
     <div className='tasklist'>
-        <h2>Update Task</h2>
+        <h2 className='m-bottom'>Update Task</h2>
         {taskdata !== null &&
             <div className='task'>
                 <div className='input_container'>
@@ -42,10 +46,13 @@ const UpdateTask = () => {
                     <input type='text' value={taskdata.descriptions} onChange={(e) => updateTask(e, 'descriptions')} placeholder='Enter Description'/><br/>
                 </div>
                 <div className='input_container'>
-                    <label>Task Status</label>
+                    <label>Your Task Done</label>
                     <input type='checkbox' value={true} checked={taskdata.completed === true} onChange={(e) => updateTask(e, 'completed')} placeholder='Enter Description'/><br/>
                 </div>
-                <button onClick={updateHandler}>Update Task</button>
+                <div className='btn_container'>
+                    <button onClick={updateHandler}>Update Task</button>
+                    <button onClick={backHandler}>Back</button>
+                </div>
             </div>
         }
     </div>

@@ -23,11 +23,16 @@ const CreateTask = () => {
     const addTask = (e) => {
         e.preventDefault()
         axios.post('/create', tasks).then(res => console.log(res)).catch(err => console.log(err))
-        navigate("/tasklist")
+        navigate("/home")
+    }
+
+    const backHandler = () => {
+        navigate("/home")
     }
 
   return (
-    <div>
+    <div className='create m-top'>
+        <h2 className='m-bottom'>Create Task</h2>
         <div className='task'>
             <div className='input_container'>
                 <label>Title</label>
@@ -37,7 +42,14 @@ const CreateTask = () => {
                 <label>Description</label>
                 <input type='text' value={tasks.description} onChange={(e) => updateTask(e, 'description')} placeholder='Enter Description'/><br/>
             </div>
-            <button onClick={addTask}>Add Task</button>
+            <div className='btn_container'>
+                {(tasks.title === "" && tasks.description === "") ? (
+                    <button className='btn_disable btn'>Add Task</button>
+                ) : (
+                    <button onClick={addTask} className='btn'>Add Task</button>
+                )}
+                <button onClick={backHandler}>Back</button>
+            </div>
         </div>
     </div>
   )
