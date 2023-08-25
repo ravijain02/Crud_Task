@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../styles/home.css'
-// import Data from '../api/data.json'
 
 const Home = ({ username }) => {
 
@@ -21,7 +20,7 @@ const Home = ({ username }) => {
 
     const addTask = (e) => {
         e.preventDefault()
-        axios.post('/create', tasks).then(res => console.log(res)).catch(err => console.log(err))
+        axios.post('/create', tasks).then(res => setTasks(res)).catch(err => console.log(err))
     }
 
     return (

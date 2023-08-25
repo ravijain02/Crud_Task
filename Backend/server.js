@@ -34,3 +34,24 @@ app.post("/create", (req, res) => {
 app.listen(3001, function () {
   console.log("Express server is running")
 })
+
+app.get("/tasklist", (req, res) => {
+  Task.find().then(item => res.json(item))
+})
+app.delete("/delete/:id", (req, res) => {
+  Task.findByIdAndDelete({ _id: req.params.id })
+    .then((doc) => console.log(doc))
+    .catch((err) => console.log(err));
+});
+
+app.put("/update/:id", (req, res) => {
+  Task.findByIdAndUpdate(
+    { _id: req.params.id },
+    {
+      title: req.body.title,
+      description: req.body.description,
+    }
+  )
+    .then((doc) => console.log(doc))
+    .catch((err) => console.log(err));
+});

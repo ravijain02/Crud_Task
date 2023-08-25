@@ -7,10 +7,16 @@ const TaskList = () => {
     const[tasklist, setTasklist] = useState(null)
 
     useEffect(() => {
-        axios.get("/").then(res => {
-            setTasklist(res)
+        axios.get("/tasklist").then(res => {
+            setTasklist(res.data)
         })
     },[tasklist])
+
+    const deleteTask = (id) => {
+        axios.delete(`/delete/${id}`).then(res => {
+            setTasklist(res.data)
+        })
+    }
 
   return (
     <div className='tasklist'>
@@ -21,14 +27,20 @@ const TaskList = () => {
                     <th>Title</th>
                     <th>Description</th>
                     <th>Task Status</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>{}kkk</td>
-                    <td>{}lll</td>
-                    <td>{}lll</td>
+                {tasklist !== null && tasklist.map(task => 
+                <tr key={task._id}>
+                    <td>{task.title}</td>
+                    <td>{task.descriptions}</td>
+                    <td>{task.completed}</td>
+                    <td><button>Update</button></td>
+                    <td><button onClick={() => deleteTask(task._id)}>Delete</button></td>
                 </tr>
+                )}
             </tbody>
         </table>
     </div>

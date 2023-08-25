@@ -11,7 +11,7 @@ const Home = () => {
     const [tasks, setTasks] = useState(
         {
             title: "",
-            description: "",
+            descriptions: "",
             completed: false
         }
     )
@@ -38,7 +38,7 @@ const Home = () => {
                 </div>
                 <div className='input_container'>
                     <label>Description</label>
-                    <input type='text' value={tasks.description} onChange={(e) => updateTask(e, 'description')} placeholder='Enter Description'/><br/>
+                    <input type='text' value={tasks.descriptions} onChange={(e) => updateTask(e, 'description')} placeholder='Enter Description'/><br/>
                 </div>
                 {/* <div className='input_container'>
                     <label>Task Status</label>
