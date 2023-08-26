@@ -75,6 +75,6 @@ app.put('/tasklist/:id', (req, res) => {
 
 app.delete("/delete/:id", (req, res) => {
     Task.findByIdAndDelete({ _id: req.params.id })
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err))
+    .then((doc) => console.log(doc))
+    .catch((err) => console.log(err))
 })
