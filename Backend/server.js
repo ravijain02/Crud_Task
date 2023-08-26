@@ -14,7 +14,9 @@ app.use(cors(
   }
 ))
 
-mongoose.connect("mongodb+srv://User:admin@cluster0.zg9eesx.mongodb.net/myDatabaseName", {
+const MONGO_URL = "mongodb+srv://User:admin@cluster0.zg9eesx.mongodb.net/myDatabaseName"
+
+mongoose.connect(MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
