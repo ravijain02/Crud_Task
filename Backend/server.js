@@ -5,7 +5,14 @@ const mongoose = require("mongoose")
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(cors())
+app.use(cors(
+  {
+    origin: ["https://crud-task-tau.vercel.app/"],
+    method: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true,
+    optionsSuccessStatus:200
+  }
+))
 
 mongoose.connect("mongodb+srv://User:admin@cluster0.zg9eesx.mongodb.net/myDatabaseName", {
   useNewUrlParser: true,
