@@ -7,7 +7,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
-mongoose.connect("mongodb+srv://User:admin@cluster0.zg9eesx.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://User:admin@cluster0.zg9eesx.mongodb.net/myDatabaseName", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 const taskSchema = mongoose.Schema({
     title: String,
